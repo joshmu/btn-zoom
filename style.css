@@ -1,0 +1,103 @@
+:root {
+  --darkBlue: #0a3d62;
+  --blue: #1e3799;
+  --lightBlue: #6a89cc;
+  --lemon: #fad390;
+  --orange: #fa983a;
+  --water: #82ccdd;
+  --lazer: var(--darkBlue);
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-image: linear-gradient(
+    var(--lightBlue),
+    var(--darkBlue),
+    var(--lightBlue)
+  );
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-family: 'Roboto Condensed', sans-serif;
+  transition: 1s;
+}
+
+button {
+  font-size: 25px;
+  letter-spacing: 3px;
+  font-weight: 500;
+  text-transform: uppercase;
+  padding: 10px 40px;
+  background-image: linear-gradient(
+    to Right,
+    var(--orange),
+    var(--lemon),
+    var(--orange)
+  );
+  border: none;
+  color: var(--darkBlue);
+  position: relative;
+  transition: 1s;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+button:focus {
+  outline: none;
+}
+
+button::before,
+button::after {
+  content: '';
+  display: inline-block;
+  width: 100%;
+  height: 5px;
+  /* background-color: var(--water); */
+  position: absolute;
+}
+
+button::before {
+  top: 0;
+  left: 0;
+  transform: translateX(-100%);
+  background-image: linear-gradient(to right, transparent, var(--lazer));
+}
+
+button:hover::before {
+  animation: lazerTop 1s infinite;
+}
+
+button::after {
+  bottom: 0;
+  right: 0;
+  transform: translateX(100%);
+  background-image: linear-gradient(to left, transparent, var(--lazer));
+}
+
+button:hover::after {
+  animation: lazerBottom 1s infinite;
+  animation-delay: 0.5s;
+}
+
+@keyframes lazerTop {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+@keyframes lazerBottom {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
